@@ -1,5 +1,7 @@
+import * as omdb from './utils.js'
 import logo from './logo.svg';
 import './App.css';
+import './moviecard.js';
 
 function App() {
   return (
@@ -21,5 +23,14 @@ function App() {
     </div>
   );
 }
+
+const movies = omdb.getMoviesBySearchTerm("star")
+.then(result => result.json())
+.then(data => console.log(data));
+console.log(movies);
+
+omdb.getMovieDetailsById("tt0076759")
+.then(result => result.json())
+.then(data => console.log(data));
 
 export default App;
